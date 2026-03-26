@@ -1,0 +1,59 @@
+<%- include("partials/header") %>
+
+<%
+  let total = 0;
+  for (let i = 0; i < cart.length; i++) {
+    total += cart[i].price * cart[i].qty;
+  }
+%>
+
+<section class="section container narrow">
+  <div class="section-top">
+    <div>
+      <p class="eyebrow">Shopping Cart</p>
+      <h2>Your Cart</h2>
+    </div>
+  </div>
+
+  <% if (cart.length === 0) { %>
+    <div class="empty-state">
+      <h3>Your cart is empty.</h3>
+      <p>Add products to continue.</p>
+      <a href="/products" class="btn btn-gold">Shop Now</a>
+    </div>
+  <% } else { %>
+
+    <div class="cart-list">
+      <% for (let i = 0; i < cart.length; i++) { %>
+        <div class="cart-item">
+          <div>
+            <h3><%= cart[i].name %></h3>
+            <p>₹<%= cart[i].price %> × <%= cart[i].qty %></p>
+          </div>
+          <strong>₹<%= cart[i].price * cart[i].qty %></strong>
+        </div>
+      <% } %>
+    </div>
+
+    <div class="cart-summary">
+      <span>Total</span>
+      <h2>₹<%= total %></h2>
+    </div>
+
+    <div class="cart-actions">
+      <h3>Buy Now with PayPal</h3>
+    </div>
+
+    <input type="hidden" id="cart-total" value="<%= total %>">
+    <script id="cart-json" type="application/json"><%- JSON.stringify(cart) %></script>
+
+    <div id="paypal-error" style="color:#ff8a8a; margin:14px 0;"></div>
+    <div id="paypal-button-container" class="paypal-wrap"></div>
+
+    <script src="https://www.paypal.com/sdk/js?client-id=AVwseqIgInwXTnbpfLS_H-I96sICWZBjuShZEoZfMRDehe8_Xt_9zZ_nGxc--pY0YRshSP7NBr0u3VPr&currency=USD"></script>
+    <script src="/js/cart.js"></script>
+
+  <% } %>
+</section>
+
+<%- include("partials/footer") %>

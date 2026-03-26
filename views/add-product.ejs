@@ -1,0 +1,43 @@
+<%- include("partials/header") %>
+
+<section class="section container narrow">
+  <div class="section-top">
+    <div>
+      <p class="eyebrow">Admin Entry</p>
+      <h2>Add Product</h2>
+    </div>
+  </div>
+
+  <form method="POST" class="lux-form">
+    <div class="form-grid">
+      <div class="field">
+        <label>Product Name</label>
+        <input name="name" placeholder="Enter product name" required>
+      </div>
+
+      <div class="field">
+        <label>Price</label>
+        <input name="price" placeholder="Enter price" required>
+      </div>
+    </div>
+
+    <div class="field">
+      <label>Image URL</label>
+      <input name="image" placeholder="Paste image URL" required>
+    </div>
+
+    <div class="field">
+      <label>Category</label>
+      <input name="category" placeholder="Enter category">
+    </div>
+
+    <div class="field">
+      <label>Description</label>
+      <textarea name="description" rows="6" placeholder="Write product description"></textarea>
+    </div>
+
+    <button class="btn btn-gold" type="submit">Add Product</button>
+  </form>
+</section>
+
+<%- include("partials/footer") %>

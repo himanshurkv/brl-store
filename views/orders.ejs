@@ -1,0 +1,32 @@
+<%- include("partials/header") %>
+
+<section class="section container narrow">
+  <div class="section-top">
+    <div>
+      <p class="eyebrow">Order History</p>
+      <h2>Your Orders</h2>
+    </div>
+  </div>
+
+  <% if (orders.length === 0) { %>
+    <div class="empty-state">
+      <h3>No orders yet.</h3>
+      <p>Your completed purchases will appear here.</p>
+      <a href="/products" class="btn btn-gold">Browse Products</a>
+    </div>
+  <% } else { %>
+    <div class="cart-list">
+      <% orders.forEach(o => { %>
+        <div class="cart-item">
+          <div>
+            <h3><%= o.productName %></h3>
+            <p><%= new Date(o.createdAt).toLocaleDateString() %></p>
+          </div>
+          <strong>₹<%= o.price %></strong>
+        </div>
+      <% }) %>
+    </div>
+  <% } %>
+</section>
+
+<%- include("partials/footer") %>

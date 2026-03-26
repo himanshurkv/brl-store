@@ -1,0 +1,49 @@
+<%- include("partials/header") %>
+
+<section class="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-overlay"></div>
+
+  <div class="hero-content container">
+    <p class="eyebrow">Premium Industrial Commerce</p>
+    <h1>Built for movement. Curated for scale.</h1>
+    <p class="hero-text">
+      Discover logistics equipment, transport essentials, and industrial products
+      in a store designed with a sharper, premium buying experience.
+    </p>
+
+    <div class="hero-actions">
+      <a href="/products" class="btn btn-gold">Shop Products</a>
+      <a href="/cart" class="btn btn-dark">View Cart</a>
+    </div>
+  </div>
+</section>
+
+<section class="section container">
+  <div class="section-top">
+    <div>
+      <p class="eyebrow">Featured Collection</p>
+      <h2>Selected products for transport, warehousing, and industrial use.</h2>
+    </div>
+    <a href="/products" class="text-link">Browse all products</a>
+  </div>
+
+  <div class="product-grid">
+    <% products.forEach(p => { %>
+      <article class="product-card">
+        <div class="product-image-wrap">
+          <img src="<%= p.image %>" alt="<%= p.name %>">
+        </div>
+
+        <div class="product-info">
+          <p class="product-category"><%= p.category || "Industrial Equipment" %></p>
+          <h3><%= p.name %></h3>
+          <p class="price">₹<%= p.price %></p>
+          <a href="/product/<%= p._id %>" class="card-link">View Product</a>
+        </div>
+      </article>
+    <% }) %>
+  </div>
+</section>
+
+<%- include("partials/footer") %>

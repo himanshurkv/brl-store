@@ -1,0 +1,28 @@
+<%- include("partials/header") %>
+
+<section class="product-page container">
+  <div class="product-gallery">
+    <div class="product-gallery-card">
+      <img src="<%= product.image %>" alt="<%= product.name %>">
+    </div>
+  </div>
+
+  <div class="product-details">
+    <p class="eyebrow"><%= product.category || "Industrial Equipment" %></p>
+    <h1><%= product.name %></h1>
+    <p class="detail-description"><%= product.description %></p>
+    <h2 class="price large">₹<%= product.price %></h2>
+
+    <form action="/add-to-cart" method="POST" class="buy-panel">
+      <input type="hidden" name="name" value="<%= product.name %>">
+      <input type="hidden" name="price" value="<%= product.price %>">
+
+      <label for="qty">Quantity</label>
+      <input id="qty" type="number" name="qty" value="1" min="1" class="qty">
+
+      <button class="btn btn-gold" type="submit">Add to Cart</button>
+    </form>
+  </div>
+</section>
+
+<%- include("partials/footer") %>
